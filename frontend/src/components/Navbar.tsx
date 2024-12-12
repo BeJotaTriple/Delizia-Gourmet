@@ -10,7 +10,7 @@ function Navbar() {
     };
 
     return (
-        <nav className="bg-gray-800 p-4 w-full fixed top-0 z-50">
+        <nav className="bg-gray-800 p-4 w-full fixed top-0 left-0 z-50">
             <div className="container mx-auto flex justify-between items-center">
                 {/* Menu en pantalla grande */}
                 <div className="hidden md:flex space-x-4">

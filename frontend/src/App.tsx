@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Categorias from './components/Categories'
 import Comidas from './components/Meals'
 import Clients from './components/Clients'
+import Products from './components/Products'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/categorias' element={<Categorias />} />
         <Route path='/comidas' element={<Comidas />} />
         <Route path='/clientes' element={<Clients />} />
+        <Route path='/products' element={<Products />} />
       </Routes>
     </Router>
   )

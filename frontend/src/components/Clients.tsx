@@ -3,7 +3,7 @@ import styles from "../style";
 import apiClient from "../api/apiClient";
 import EditButton from "../assets/EditButton";
 import DeleteButton from "../assets/DeleteButton";
-
+import { format } from 'date-fns';
 // Definición de la interfaz para un cliente
 interface Client {
     name: string;
@@ -19,7 +19,7 @@ function Clients() {
     const [clients, setClients] = useState<Client[]>([]);
 
     useEffect(() => {
-        apiClient.get("/clients")
+        apiClient.get("api/clients")
             .then(response => setClients(response.data))
             .catch(error => console.error('Error fetching data: ', error));
     }, []);
@@ -71,7 +71,7 @@ function Clients() {
                             <td className={`${styles.tbody}`}>{client.address}</td>
                             <td className={`${styles.tbody}`}>{client.city}</td>
                             <td className={`${styles.tbody}`}>{client.tel_numb}</td>
-                            <td className={`${styles.tbody}`}>{client.reg_date.toLocaleDateString()}</td>
+                            <td className={`${styles.tbody}`}>{format(client.reg_date, 'MM/dd/yyyy')}</td>
                             <EditButton onClick={() => handleEdit()} /> {/*Agregar client.id */}
                             <DeleteButton onClick={() => handleDelete()} /> {/*Agregar client.id */}
                         </tr>
