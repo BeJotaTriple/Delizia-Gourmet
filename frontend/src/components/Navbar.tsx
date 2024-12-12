@@ -15,13 +15,13 @@ function Navbar() {
             <img src={logo} alt="" className="w-20 h-20 rounded-full border-4 border-gray-300"/>
                 {/* Menu en pantalla grande */}
                 <div className="hidden md:flex space-x-4">
-                    <Link to='/inicio'>Inicio</Link>
+                    <Link to='/dashboard'>Dashboard</Link>
                     <Link to='/categorias'>Categorías</Link>
+                    <Link to='/add-category'>Agregar Categoría</Link>
                     <Link to='/products'>Productos</Link>
                     <Link to='/clientes'>Clientes</Link>
                     <Link to='/add-product'>Agregar Producto</Link>
                     <Link to='/add-client'>Agregar Cliente</Link>
-                    <Link to='/dashboard'>Dashboard</Link>
                 </div>
 
                 <div className="md:block relative">
@@ -47,13 +47,13 @@ function Navbar() {
             {/* Menu desplegable en pantalla pequeña */}
             <div className={`${isOpen ? 'block' : 'hidden'} md:hidden`}>
                 <div className="flex flex-col mt-2">
-                    <Link to='/inicio'>Inicio</Link>
+                    <Link to='/dashboard'>Dashboard</Link>
                     <Link to='/categorias'>Categorías</Link>
+                    <Link to='/add-category'>Agregar Categoría</Link>
                     <Link to='/products'>Productos</Link>
                     <Link to='/clientes'>Clientes</Link>
                     <Link to='/add-product'>Agregar Producto</Link>
                     <Link to='/add-client'>Agregar Cliente</Link>
-                    <Link to='/dashboard'>Dashboard</Link>
                 </div>
             </div>
         </nav>

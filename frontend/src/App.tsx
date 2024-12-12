@@ -6,7 +6,7 @@ import AddProduct from './components/AddProduct'
 import Clients from './components/Clients'
 import Products from './components/Products'
 import AddClient from './components/AddClient'
-import UploadImage from './components/UploadImage'
+import AddCategory from './components/AddCategory'
 
 function App() {
   return (
@@ -15,9 +15,9 @@ function App() {
         <h1 className='font-bold w-full'>Delizia Gourtmet</h1>
       </header>
       <Navbar />
-      <UploadImage />
       <Routes>
         <Route path='/categorias' element={<Categorias />} />
+        <Route path='/add-category' element={<AddCategory />} />
         <Route path='/add-product' element={<AddProduct />} />
         <Route path='/clientes' element={<Clients />} />
         <Route path='/add-client' element={<AddClient />} />
