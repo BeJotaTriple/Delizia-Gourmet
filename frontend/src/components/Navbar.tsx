@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "../style";
-
+import logo from "../assets/logo.png"
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -12,6 +12,7 @@ function Navbar() {
     return (
         <nav className="bg-gray-800 p-4 w-full fixed top-0 left-0 z-50">
             <div className="container mx-auto flex justify-between items-center">
+            <img src={logo} alt="" className="w-20 h-20 rounded-full border-4 border-gray-300"/>
                 {/* Menu en pantalla grande */}
                 <div className="hidden md:flex space-x-4">
                     <Link to='/inicio'>Inicio</Link>

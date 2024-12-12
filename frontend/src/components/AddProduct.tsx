@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import apiClient from "../api/apiClient";
 import styles from "../style"
+
+interface Category {
+    _id: string;
+    name: string;
+    description: string;
+}
 
 const AddProduct: React.FC = () => {
     const [formData, setformData] = useState({
@@ -11,6 +17,21 @@ const AddProduct: React.FC = () => {
         stock: '',
         price: '',
     });
+
+    const [categories, setCategories] = useState<Category[]>([]);
+
+    useEffect(() => {
+        //Define el tipo de retorno de la función asíncrona
+        const fetchCategories = async (): Promise<void> => {
+            try{
+                const response = await apiClient.get<Category[]>('api/categories/');
+                setCategories(response.data); //Asignar los datos al estado
+            } catch(error) {
+                console.error('Error to get categories: ', error);
+            };
+        };
+        fetchCategories();
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -32,11 +53,16 @@ const AddProduct: React.FC = () => {
                     className={`${styles.inputForm}`}/>
                 <input type="text" placeholder="ingredientes" onChange={e => setformData({ ...formData, ingredients: e.target.value })}
                     className={`${styles.inputForm}`}/>
-                <input type="text" placeholder="categoría" onChange={e => setformData({ ...formData, category: e.target.value })}
+                <select value={formData.category} onChange={e => setformData({...formData, category: e.target.value})}
+                    className={`${styles.selectOptionsForm}`}>
+                    <option value="" disabled>Selecciona una categoría</option>
+                    {categories.map((category, index) => (
+                        <option key={index} value={category._id}>{category.name}</option>
+                    ))}
+                </select>
+                <input type="text"placeholder="cantidad" onChange={e => setformData({ ...formData, stock: e.target.value })}
                     className={`${styles.inputForm}`}/>
-                <input type="text"placeholder="stock" onChange={e => setformData({ ...formData, stock: e.target.value })}
-                    className={`${styles.inputForm}`}/>
-                <input type="text" placeholder="price" onChange={e => setformData({ ...formData, price: e.target.value })}
+                <input type="text" placeholder="precio" onChange={e => setformData({ ...formData, price: e.target.value })}
                     className={`${styles.inputForm}`}/>
                 <button type="submit" className={`${styles.buttonForm}`}>Enviar</button>
             </div>
