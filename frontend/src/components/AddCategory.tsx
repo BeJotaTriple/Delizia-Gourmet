@@ -15,7 +15,9 @@ const AddCategory: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      await handleUpload();
       await apiClient.post('api/categories/', formData);
+      console.log(formData);
       alert('Category registered sucessfully');
     } catch (error) {
       alert('Error registering category');
@@ -56,7 +58,6 @@ const AddCategory: React.FC = () => {
         <input type="text" placeholder="descripción" onChange={e => setFormData({ ...formData, description: e.target.value })}
           className={`${styles.inputForm}`} />
         <div>
-          <button onClick={handleUpload} className={`${styles.buttonForm}`}>Upload Image</button>
           <input type="file" onChange={handleImageChange} />
         </div>
         <button type="submit" className={`${styles.buttonForm}`}>Enviar</button>

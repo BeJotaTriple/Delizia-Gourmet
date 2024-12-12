@@ -7,14 +7,14 @@ export const addCategory = async (
   res: Response,
 ): Promise<void> => {
   try {
-    const { name, description } = req.body;
+    const { name, description, image } = req.body;
     const existingCategory = await Category.findOne({ name });
     if (existingCategory) {
       res.status(400).json({ message: "Category already exists" });
       return;
     }
 
-    const newCategory = new Category({ name, description });
+    const newCategory = new Category({ name, description, image });
     await newCategory.save();
     res.status(201).json(newCategory);
   } catch (error) {
@@ -100,12 +100,10 @@ export const deleteCategoryById = async (
       return;
     }
 
-    res
-      .status(200)
-      .json({
-        message: "Category deleted successfully",
-        category: deleteCategory,
-      });
+    res.status(200).json({
+      message: "Category deleted successfully",
+      category: deleteCategory,
+    });
   } catch (error) {
     const errorMessage =
       error instanceof Error
