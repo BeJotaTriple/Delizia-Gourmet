@@ -6,6 +6,7 @@ import DeleteButton from "../assets/DeleteButton";
 import { format } from 'date-fns';
 // Definición de la interfaz para un cliente
 interface Client {
+    _id: string;
     name: string;
     email: string;
     address: string;
@@ -38,10 +39,10 @@ function Clients() {
     }
 
     // en el parámetro se debe agregar clientId: string
-    const handleDelete = async () => {
+    const handleDelete = async (clientId: string) => {
         try{
-            await apiClient.delete(`/clients/`) //agregar ${clientId} a la ruta
-            .then(response => setClients(response.data))
+            await apiClient.delete(`api/clients/${clientId}`) //agregar ${clientId} a la ruta
+            setClients(prevClients => prevClients.filter(client => client._id !== clientId));
             alert("Client deleted sucessfully")
         } catch(error) {
             console.error("Error deleting client:", error)
@@ -73,7 +74,7 @@ function Clients() {
                             <td className={`${styles.tbody}`}>{client.tel_numb}</td>
                             <td className={`${styles.tbody}`}>{format(client.reg_date, 'MM/dd/yyyy')}</td>
                             <EditButton onClick={() => handleEdit()} /> {/*Agregar client.id */}
-                            <DeleteButton onClick={() => handleDelete()} /> {/*Agregar client.id */}
+                            <DeleteButton onClick={() => handleDelete(client._id)} /> {/*Agregar client.id */}
                         </tr>
                     ))}
                 </tbody>
