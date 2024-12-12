@@ -16,6 +16,7 @@ function Navbar() {
                 <div className="hidden md:flex space-x-4">
                     <Link to='/inicio'>Inicio</Link>
                     <Link to='/categorias'>Categorías</Link>
+                    <Link to='/products'>Productos</Link>
                     <Link to='/clientes'>Clientes</Link>
                     <Link to='/dashboard'>Dashboard</Link>
                 </div>
@@ -45,6 +46,7 @@ function Navbar() {
                 <div className="flex flex-col mt-2">
                     <Link to='/inicio'>Inicio</Link>
                     <Link to='/categorias'>Categorías</Link>
+                    <Link to='/products'>Productos</Link>
                     <Link to='/clientes'>Clientes</Link>
                     <Link to='/dashboard'>Dashboard</Link>
                 </div>
