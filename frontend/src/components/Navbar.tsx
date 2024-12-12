@@ -18,6 +18,8 @@ function Navbar() {
                     <Link to='/categorias'>Categorías</Link>
                     <Link to='/products'>Productos</Link>
                     <Link to='/clientes'>Clientes</Link>
+                    <Link to='/add-product'>Agregar Producto</Link>
+                    <Link to='/add-client'>Agregar Cliente</Link>
                     <Link to='/dashboard'>Dashboard</Link>
                 </div>
 
@@ -48,6 +50,8 @@ function Navbar() {
                     <Link to='/categorias'>Categorías</Link>
                     <Link to='/products'>Productos</Link>
                     <Link to='/clientes'>Clientes</Link>
+                    <Link to='/add-product'>Agregar Producto</Link>
+                    <Link to='/add-client'>Agregar Cliente</Link>
                     <Link to='/dashboard'>Dashboard</Link>
                 </div>
             </div>
