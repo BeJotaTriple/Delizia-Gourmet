@@ -28,7 +28,7 @@ function Categorias() {
                         <h3 className="font-bold">Categoría {categoria.name}</h3> {/*usar categoria.name*/}
                         <img src={categoria.image || "https://content.elmueble.com/medio/2021/02/15/cenas-saludables-tosta-00526812_7ea32575_1200x1766.jpg"}></img> {/*usar categoria.image*/}
                         <div className="m-4">
-                            <span className="text-md">Descripción</span>
+                            <span className="text-md">{categoria.description}</span>
                             <span className="block text-gray-500 text-sm">Cantidad: {index + 1}</span>
                         </div>
                     </div>
