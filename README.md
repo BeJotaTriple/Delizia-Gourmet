@@ -50,58 +50,45 @@ Este es un  sistema de gestión para la tienda **Delizia Gourmet**, una empresa 
 -  [MongoDB](https://www.mongodb.com/) - Base de datos NoSQL
 
   
-## Diagrama bases de datos:
-
+## Diagrama de la base de datos
 ```mermaid
 
 erDiagram
 
-productos ||--|| categoria : "usuario"
+    CLIENTS ||--O{ PRODUCTS : "want"
+    CLIENTS{
+        ObjectId id PK
+        String name
+        String email
+        String address
+        string city
+        String tel_numb
+        date reg_date
+    }
 
-  
+    PRODUCTS |{--|| CATEGORIES : "belongs to"
+    PRODUCTS{
+        ObjectId id PK
+        String name
+        String description
+        String ingredients
+        ObjectId category FK
+        Number stock
+        Number price
+        String image
+    }
 
-productos {
+    CATEGORIES {
+        ObjectId id
+        String name
+        String description
+        String image
+        Date creat_date
+    }
 
-  
-
-SERIAL id PK
-
-  
-
-VARCHAR nombre
-
-  
-
-VARCHAR correo
-
-  
-
-VARCHAR password
-
-  
-
-VARCHAR ciudad
-
-  
-
-VARCHAR direccion
-
-  
-
-VARCHAR telefono
-
-  
-
-VARCHAR rol
-
-  
-
-TIMESTAMP fecha_registro
-
-}
+    Delizia-Gourmet ||--o{ CLIENTS : "have"
 
 ```
-
 ### Instalación y Configuración
 
   
