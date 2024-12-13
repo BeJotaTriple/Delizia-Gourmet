@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
 import Categorias from './components/Categories'
@@ -18,6 +18,7 @@ function App() {
       </header>
       <Navbar />
       <Routes>
+        <Route path='/' element={<Navigate to ='/dashboard' />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/categorias' element={<Categorias />} />
         <Route path='/add-category' element={<AddCategory />} />

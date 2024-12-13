@@ -10,11 +10,11 @@ function Navbar() {
     };
 
     return (
-        <nav className="bg-gray-800 p-4 w-full fixed top-0 left-0 z-50">
+        <nav className="bg-gradient-to-r from-cyan-500 to-blue-800  p-4 w-full fixed top-0 left-0 z-50">
             <div className="container mx-auto flex justify-between items-center">
             <img src={logo} alt="" className="w-20 h-20 rounded-full border-4 border-gray-300"/>
                 {/* Menu en pantalla grande */}
-                <div className="hidden md:flex space-x-4">
+                <div className="hidden md:flex space-x-4 text-yellow-50">
                     <Link to='/dashboard'>Dashboard</Link>
                     <Link to='/categorias'>Categorías</Link>
                     <Link to='/add-category'>Agregar Categoría</Link>

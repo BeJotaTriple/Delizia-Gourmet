@@ -11,6 +11,7 @@ interface Category {
 }
 // Definición de la interfaz para un producto
 interface Product {
+  _id: string;
   name: string;
   description: string;
   ingredients: string;
@@ -43,10 +44,10 @@ function Products() {
     }
 
     // en el parámetro se debe agregar clientId: string
-    const handleDelete = async () => {
+    const handleDelete = async (productId: string) => {
         try{
-            await apiClient.delete(`api/products/`) //agregar ${clientId} a la ruta
-            .then(response => setProducts(response.data))
+            await apiClient.delete(`api/products/${productId}`) //agregar ${clientId} a la ruta
+            setProducts(prevProducts => prevProducts.filter(product => product._id !== productId))
             alert("Product deleted sucessfully")
         } catch(error) {
             console.error("Error deleting Product:", error)
@@ -74,11 +75,11 @@ function Products() {
                             <td className={`${styles.tbody}`}>{product.name}</td>
                             <td className={`${styles.tbody}`}>{product.description}</td>
                             <td className={`${styles.tbody}`}>{product.ingredients}</td>
-                            <td className={`${styles.tbody}`}>{product.category.name}</td>
+                            <td className={`${styles.tbody}`}>{product.category? product.category.name : "No se encuentra la categoria"}</td>
                             <td className={`${styles.tbody}`}>{product.stock}</td>
                             <td className={`${styles.tbody}`}>{`$${product.price}`}</td>
                             <EditButton onClick={() => handleEdit()} /> {/*Agregar product.id */}
-                            <DeleteButton onClick={() => handleDelete()} /> {/*Agregar product.id */}
+                            <DeleteButton onClick={() => handleDelete(product._id)} /> {/*Agregar product.id */}
                         </tr>
                     ))}
                 </tbody>

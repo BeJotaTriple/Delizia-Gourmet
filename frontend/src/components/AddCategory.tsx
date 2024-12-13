@@ -15,10 +15,16 @@ const AddCategory: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await handleUpload();
-      await apiClient.post('api/categories/', formData);
-      console.log(formData);
-      alert('Category registered sucessfully');
+      if (image) {
+        await handleUpload();
+      }
+      if (formData.image !== "") {
+        await apiClient.post("api/categories/", formData);
+        console.log(formData);
+        alert("Category registered successfully");
+      } else {
+        alert("Wait uploading image, please try again.");
+      }
     } catch (error) {
       alert('Error registering category');
     }
@@ -40,8 +46,7 @@ const AddCategory: React.FC = () => {
       try {
         const response = await axios.post('https://api.cloudinary.com/v1_1/dl8mgmlbq/image/upload', formDataImage);
         const imageUrl = response.data.secure_url;
-        setFormData({...formData, image: imageUrl});
-        // Enviar la URL de la imagen a tu backend para almacenarla en la base de datos
+        setFormData(prev => ({ ...prev, image: imageUrl }));
         console.log('Image URL saved to database:', imageUrl);
       } catch (error) {
         console.error('Error uploading image:', error);
