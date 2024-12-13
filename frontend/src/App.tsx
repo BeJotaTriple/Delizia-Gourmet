@@ -7,6 +7,7 @@ import Clients from './components/Clients'
 import Products from './components/Products'
 import AddClient from './components/AddClient'
 import AddCategory from './components/AddCategory'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='/add-client' element={<AddClient />} />
         <Route path='/products' element={<Products />} />
       </Routes>
+      <Footer/>
     </Router>
   )
 }
