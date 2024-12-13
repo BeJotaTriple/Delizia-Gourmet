@@ -6,6 +6,7 @@ import AddProduct from './components/AddProduct'
 import Clients from './components/Clients'
 import Products from './components/Products'
 import AddClient from './components/AddClient'
+import EditClient from "./components/EditClient";
 import AddCategory from './components/AddCategory'
 import Footer from './components/Footer'
 import Dashboard from './components/Dashboard'
@@ -25,6 +26,7 @@ function App() {
         <Route path='/add-product' element={<AddProduct />} />
         <Route path='/clientes' element={<Clients />} />
         <Route path='/add-client' element={<AddClient />} />
+        <Route path="/edit-client/:id" element={<EditClient />} />
         <Route path='/products' element={<Products />} />
       </Routes>
       <Footer/>

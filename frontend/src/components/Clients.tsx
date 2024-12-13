@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import styles from "../style";
 import apiClient from "../api/apiClient";
 import EditButton from "../assets/EditButton";
@@ -18,6 +19,7 @@ interface Client {
 function Clients() {
     // Uso de la interfaz Client para tipar el estado
     const [clients, setClients] = useState<Client[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         apiClient.get("api/clients")
@@ -26,16 +28,8 @@ function Clients() {
     }, []);
 
     //agregar el parámetro client: Client
-    const handleEdit = async () => {
-        //Lógica para eliminar el cliente
-        try{
-            await apiClient.put(`/clients/`) //agregar ${clientId} a la ruta
-            .then(response => setClients(response.data))
-            alert("Client deleted sucessfully")
-        } catch(error) {
-            console.error("Error deleting client:", error)
-        }
-        console.log("Editing client:, client");
+    const handleEdit = async (clientId: string) => {
+        navigate(`/edit-client/${clientId}`);
     }
 
     // en el parámetro se debe agregar clientId: string
@@ -73,7 +67,7 @@ function Clients() {
                             <td className={`${styles.tbody}`}>{client.city}</td>
                             <td className={`${styles.tbody}`}>{client.tel_numb}</td>
                             <td className={`${styles.tbody}`}>{format(client.reg_date, 'MM/dd/yyyy')}</td>
-                            <EditButton onClick={() => handleEdit()} /> {/*Agregar client.id */}
+                            <EditButton onClick={() => handleEdit(client._id)} /> {/*Agregar client.id */}
                             <DeleteButton onClick={() => handleDelete(client._id)} /> {/*Agregar client.id */}
                         </tr>
                     ))}
