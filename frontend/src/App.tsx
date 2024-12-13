@@ -8,6 +8,7 @@ import Products from './components/Products'
 import AddClient from './components/AddClient'
 import AddCategory from './components/AddCategory'
 import Footer from './components/Footer'
+import Dashboard from './components/Dashboard'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       </header>
       <Navbar />
       <Routes>
+        <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/categorias' element={<Categorias />} />
         <Route path='/add-category' element={<AddCategory />} />
         <Route path='/add-product' element={<AddProduct />} />
