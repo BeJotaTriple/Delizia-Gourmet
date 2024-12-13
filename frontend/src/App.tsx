@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
       <header className='container mx-auto flex'>
-        <h1 className='font-bold w-full'>Delizia Gourtmet</h1>
+        <h1 className='font-bold w-full text-5xl'>Delizia Gourtmet</h1>
       </header>
       <Navbar />
       <Routes>

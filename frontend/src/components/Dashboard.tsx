@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import 'tailwindcss/tailwind.css';
+import apiClient from '../api/apiClient';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -16,23 +17,23 @@ const Dashboard = () => {
   const [data, setData] = useState<Data | null>(null);
 
   useEffect(() => {
-    // Simulación de una llamada a la base de datos
     const fetchData = async () => {
-      // Aquí iría la lógica para obtener datos de la base de datos
-      const response = await new Promise<Data>((resolve) =>
-        setTimeout(() => resolve({ categories: 10, products: 20, clients: 30 }), 1000)
-      );
-      setData(response);
+        try{
+            await apiClient.get('/api/dashboard')
+            .then(response => setData(response.data))
+            .catch(error => console.error('Error fetching categories: ', error));
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
     };
-
     fetchData();
   }, []);
 
   const chartData = {
-    labels: ['Categories', 'Products', 'Clients'],
+    labels: ['Categorias', 'Productos', 'Clientes'],
     datasets: [
       {
-        label: 'Collections',
+        label: 'Colecciones',
         data: data ? [data.categories, data.products, data.clients] : [],
         backgroundColor: ['rgba(75, 192, 192, 0.2)'],
         borderColor: ['rgba(75, 192, 192, 1)'],
@@ -46,15 +47,15 @@ const Dashboard = () => {
       <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
       <div className="grid grid-cols-3 gap-4 mb-8">
         <div className="bg-white p-4 rounded shadow">
-          <h2 className="text-xl font-semibold">Categories</h2>
+          <h2 className="text-xl font-semibold">Categorias</h2>
           <p>{data ? data.categories : 'Loading...'}</p>
         </div>
         <div className="bg-white p-4 rounded shadow">
-          <h2 className="text-xl font-semibold">Products</h2>
+          <h2 className="text-xl font-semibold">Productos</h2>
           <p>{data ? data.products : 'Loading...'}</p>
         </div>
         <div className="bg-white p-4 rounded shadow">
-          <h2 className="text-xl font-semibold">Clients</h2>
+          <h2 className="text-xl font-semibold">Clientes</h2>
           <p>{data ? data.clients : 'Loading...'}</p>
         </div>
       </div>

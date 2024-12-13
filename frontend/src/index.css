@@ -6,6 +6,7 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  background-color: #f1f2f3;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,7 +31,7 @@ body {
 }
 
 header {
-  margin-top: 5rem;
+  margin-top: 10rem;
 }
 
 h1 {

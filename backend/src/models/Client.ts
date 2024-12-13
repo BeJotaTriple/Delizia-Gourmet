@@ -16,6 +16,6 @@ const ClientSchema: Schema = new Schema({
   city: { type: String, required: true },
   tel_numb: { type: String, required: true },
   reg_date: { type: Date, default: Date.now },
-});
+},{collection: 'clients'});
 
 export default mongoose.model<IClient>("Clients", ClientSchema);

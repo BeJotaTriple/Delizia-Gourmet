@@ -26,9 +26,9 @@ function Categorias() {
                 return (
                     <div key={index} className="bg-white rounded overflow-hidden shadow-md p-4">
                         <h3 className="font-bold">Categoría {categoria.name}</h3> {/*usar categoria.name*/}
-                        <img src={categoria.image || "https://content.elmueble.com/medio/2021/02/15/cenas-saludables-tosta-00526812_7ea32575_1200x1766.jpg"}></img> {/*usar categoria.image*/}
+                        <img className="h-1/2 rounded shadow-md mx-auto" src={categoria.image || "https://content.elmueble.com/medio/2021/02/15/cenas-saludables-tosta-00526812_7ea32575_1200x1766.jpg"}></img> {/*usar categoria.image*/}
                         <div className="m-4">
-                            <span className="text-md">{categoria.description}</span>
+                            <span className="mx-auto text-lg">{categoria.description}</span>
                             <span className="block text-gray-500 text-sm">Cantidad: {index + 1}</span>
                         </div>
                     </div>

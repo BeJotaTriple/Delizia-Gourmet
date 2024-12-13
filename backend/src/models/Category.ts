@@ -12,6 +12,6 @@ const CategorySchema: Schema = new Schema({
   description: { type: String, required: true },
   image: { type: String },
   creat_date: { type: Date, default: Date.now },
-});
+}, {collection: 'categories'});
 
 export default mongoose.model<ICategory>("Categories", CategorySchema);
