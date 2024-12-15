@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import styles from "../style";
 import apiClient from "../api/apiClient";
 import EditButton from "../assets/EditButton";
@@ -30,17 +31,9 @@ function Products() {
             .catch(error => console.error('Error fetching data: ', error));
     }, []);
 
-    //agregar el parámetro client: Client
-    const handleEdit = async () => {
-        //Lógica para eliminar el cliente
-        try{
-            await apiClient.put(`api/products/`) //agregar ${clientId} a la ruta
-            .then(response => setProducts(response.data))
-            alert("Product deleted sucessfully")
-        } catch(error) {
-            console.error("Error deleting Product:", error)
-        }
-        console.log("Editing product:, product");
+    const navigate = useNavigate();
+    const handleEdit = async (productId: string) => {
+        navigate(`/edit-product/${productId}`);
     }
 
     // en el parámetro se debe agregar clientId: string
@@ -78,8 +71,8 @@ function Products() {
                             <td className={`${styles.tbody}`}>{product.category? product.category.name : "No se encuentra la categoria"}</td>
                             <td className={`${styles.tbody}`}>{product.stock}</td>
                             <td className={`${styles.tbody}`}>{`$${product.price}`}</td>
-                            <EditButton onClick={() => handleEdit()} /> {/*Agregar product.id */}
-                            <DeleteButton onClick={() => handleDelete(product._id)} /> {/*Agregar product.id */}
+                            <EditButton onClick={() => handleEdit(product._id)} />
+                            <DeleteButton onClick={() => handleDelete(product._id)} />
                         </tr>
                     ))}
                 </tbody>

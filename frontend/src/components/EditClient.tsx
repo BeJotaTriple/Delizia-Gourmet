@@ -29,6 +29,7 @@ const EditClient: React.FC = () => {
             navigate('/clientes');
         } catch (error) {
             alert('Error updating client');
+            console.log(error);
         }
     };
 
@@ -48,7 +49,8 @@ const EditClient: React.FC = () => {
                     className={`${styles.inputForm}`}/>
                 <input type="date" value={formData.reg_date} onChange={e => setFormData({ ...formData, reg_date: e.target.value })}
                     className={`${styles.inputForm}`}/>
-                <button type="submit" className={`${styles.buttonForm}`}>Enviar</button>
+                <button type="submit" className={`${styles.buttonForm}`}>Actualizar</button>
+                <button type="button" onClick={() => navigate('/clientes')} className={`${styles.buttonForm}`}>Cancelar</button>
             </div>
         </form>
     );
