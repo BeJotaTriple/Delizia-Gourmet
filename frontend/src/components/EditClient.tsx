@@ -47,7 +47,7 @@ const EditClient: React.FC = () => {
                     className={`${styles.inputForm}`}/>
                 <input type="tel" value={formData.tel_numb} onChange={e => setFormData({ ...formData, tel_numb: e.target.value })}
                     className={`${styles.inputForm}`}/>
-                <input type="date" value={formData.reg_date} onChange={e => setFormData({ ...formData, reg_date: e.target.value })}
+                <input type="date" value={formData.reg_date.split('T')[0]} onChange={e => setFormData({ ...formData, reg_date: e.target.value })}
                     className={`${styles.inputForm}`}/>
                 <button type="submit" className={`${styles.buttonForm}`}>Actualizar</button>
                 <button type="button" onClick={() => navigate('/clientes')} className={`${styles.buttonForm}`}>Cancelar</button>

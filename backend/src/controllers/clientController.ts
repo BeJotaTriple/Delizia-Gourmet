@@ -7,14 +7,21 @@ export const registerClient = async (
   res: Response,
 ): Promise<void> => {
   try {
-    const { name, email, address, city, tel_numb } = req.body;
+    const { name, email, address, city, tel_numb, reg_date } = req.body;
     const existingClient = await Client.findOne({ email });
     if (existingClient) {
       res.status(400).json({ message: "User already exists" });
       return;
     }
 
-    const newClient = new Client({ name, email, address, city, tel_numb });
+    const newClient = new Client({
+      name,
+      email,
+      address,
+      city,
+      tel_numb,
+      reg_date,
+    });
     await newClient.save();
     res
       .status(201)

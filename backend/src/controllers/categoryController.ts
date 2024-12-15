@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Category from "../models/Category";
+import Product from "../models/Product";
 
 //Metodo para agregar una categoria
 export const addCategory = async (
@@ -110,5 +111,27 @@ export const deleteCategoryById = async (
         ? error.message
         : "An unknown error occurred while deleting category";
     res.status(500).json({ error: errorMessage });
+  }
+};
+
+// Metodo para obtener categorias junto con el numero de productos asociados
+export const getCategoriesWithProductCount = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
+  try {
+    const categories = await Category.find();
+    const categoriesWithProductCount = await Promise.all(
+      categories.map(async (category) => {
+        const productCount = await Product.countDocuments({
+          category: category._id,
+        });
+        return { ...category.toObject(), productCount };
+      }),
+    );
+    res.status(200).json(categoriesWithProductCount);
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    res.status(500).json({ message: "Error fetching categories" });
   }
 };

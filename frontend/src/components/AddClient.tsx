@@ -16,9 +16,10 @@ const AddClient: React.FC = () => {
         e.preventDefault();
         try {
             await apiClient.post('api/clients/', formData);
-            alert('Product registered sucessfully');
+            alert('Client registered sucessfully');
         } catch (error) {
-            alert('Error registering product');
+            alert('Error registering client');
+            console.log(error);
         }
     };
 

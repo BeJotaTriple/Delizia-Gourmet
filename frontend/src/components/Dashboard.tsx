@@ -19,7 +19,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
         try{
-            await apiClient.get('/api/dashboard')
+            await apiClient.get('/api/dashboard/index')
             .then(response => setData(response.data))
             .catch(error => console.error('Error fetching categories: ', error));
         } catch (error) {
