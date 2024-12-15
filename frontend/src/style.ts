@@ -6,6 +6,7 @@ const styles = {
     inputForm: "border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500",
     buttonForm: "bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500",
     selectOptionsForm: "border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500",
+    buttonDisabled: "bg-gray-600",
 }
 
 export default styles;

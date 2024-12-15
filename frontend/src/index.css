@@ -95,7 +95,7 @@ footer {
 }
 
 .social-media a:hover img {
-  filter: brightness(0) invert(1); 
+  filter: grayscale(100%); 
 }
 
 table {
