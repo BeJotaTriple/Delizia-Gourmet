@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "frontend-build": "cd ../frontend && npm install ",
+    "backend-build": "npm install && npm run build",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "construction": "npm run backend-build && npm run frontend-build",
+    "start": "concurrently \"npm run start-frontend\" \"npm run start-backend\"",
+    "start-frontend": "cd ../frontend && npm run dev",
+    "start-backend": "npm run dev",
     "dev": "nodemon dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,6 +18,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "concurrently": "^9.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
