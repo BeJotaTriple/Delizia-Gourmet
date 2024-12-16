@@ -114,9 +114,9 @@ npm  install
 
 ```bash
 
-PORT  =  5000
+PORT  =  <5000 o Puerto de preferencia>
 
-MONGO_URL  =  mongodb://localhost:27017/Delizia-Gourmet
+MONGO_URI  =  mongodb://localhost:27017/Delizia-Gourmet <Base de Datos de Mongo Atlas>
 
 ```
 
@@ -124,7 +124,11 @@ MONGO_URL  =  mongodb://localhost:27017/Delizia-Gourmet
 
 ```bash
 
-VITE_REACT_APP_API_URL= http://localhost:5000/
+VITE_REACT_APP_API_URL= http://localhost:5000/ <Ruta del servidor Backend>
+
+VITE_REACT_APP_CLOUD_NAME="ddjueeek6" <Cloud name de la cuenta en Cloudinary>
+
+VITE_REACT_APP_UPLOAD_PRESET="img-DeliziaGourmet" <Preset de configuración para subir imágenes a Cloudinary>
 
 ```
 ## Ejecución
