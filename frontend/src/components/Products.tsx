@@ -4,6 +4,8 @@ import styles from "../style";
 import apiClient from "../api/apiClient";
 import EditButton from "../assets/EditButton";
 import DeleteButton from "../assets/DeleteButton";
+import ModalProducts from "../components/ModalProduct";
+import VisualizeButton from "../assets/VisualizeButton";
 
 // Definición de la interfaz para un categoria
 interface Category {
@@ -19,17 +21,25 @@ interface Product {
   category: Category;
   stock: number;
   price: number;
+  image: string;
 }
 
 function Products() {
-    // Uso de la interfaz Client para tipar el estado
+    // Uso de la interfaz Product para tipar el estado
     const [products, setProducts] = useState<Product[]>([]);
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+    const [isModalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
         apiClient.get("api/products")
             .then(response => setProducts(response.data))
             .catch(error => console.error('Error fetching data: ', error));
     }, []);
+
+    const getProduct = (product: Product) => {
+        setSelectedProduct(product);
+        setModalOpen(true);
+    };
 
     const navigate = useNavigate();
     const handleEdit = async (productId: string) => {
@@ -73,10 +83,17 @@ function Products() {
                             <td className={`${styles.tbody}`}>{`$${product.price}`}</td>
                             <EditButton onClick={() => handleEdit(product._id)} />
                             <DeleteButton onClick={() => handleDelete(product._id)} />
+                            <VisualizeButton onClick={() => getProduct(product)}/>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            {isModalOpen && selectedProduct && (
+                <ModalProducts
+                product={selectedProduct}
+                onClose={() => setModalOpen(false)}
+                />
+            )}
         </div>
     )
 }
