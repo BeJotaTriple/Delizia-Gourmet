@@ -15,7 +15,7 @@ import Dashboard from './components/Dashboard'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Delizia-Gourmet">  
       <header className='container mx-auto flex'>
         <h1 className='font-bold w-full text-5xl'>Delizia Gourtmet</h1>
       </header>
@@ -32,6 +32,7 @@ function App() {
         <Route path="/edit-client/:id" element={<EditClient />} />
         <Route path='/products' element={<Products />} />
         <Route path="/edit-product/:id" element={<EditProduct />} />
+        <Route path="*" element={<Dashboard />} />
       </Routes>
       <Footer/>
     </Router>
