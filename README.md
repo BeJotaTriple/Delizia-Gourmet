@@ -19,27 +19,23 @@ Este es un  sistema de gestión para la tienda **Delizia Gourmet**, una empresa 
 
 ### Funcionalidades
 
-- **Página de inicio**: (Personalizada según la temática de la tienda)
+- **Dashboard**: (Estadísticas básicas de la base de datos,  tales como número total de categoría, clientes y productos registrados. Filtros básicos de información.)
 
-- **Gestión de Productos**: (Creación de productos, listado de productos)
+- **Gestión de Categoría**: Creación, edición, eliminación y listado de categorías
 
-- **Gestión de clientes**: (Registro y listado de clientes)
+- **Gestión de Productos**: Creación, edición, eliminación y listado de productos
 
-- **Estadística Básicas**: Tales como numero total de clientes y productos registrados. Filtros basicos de información.
+- **Gestión de Clientes**: Creación, edición, eliminación y listado de clientes
 
-- **Diseño Responsive**: (Interfaz amigable a dispositivos móviles y de escritorios)
+- **Diseño Responsive**: Interfaz amigable a dispositivos móviles y de escritorios
 
 ### Tecnologías Usadas
 
--  **Frontend**: Desarrollo en **React.js** con **TypeScript**
-
-  
-
-  
+-  **Frontend**: Desarrollo en **React.js** con **TypeScript** y estilos con **Tailwind CSS** 
 
 -  **Backend**: Desarrolló en **Node.js** con **Express**
 
--  **Base de datos**  **MongoDB** para almacenar información de productos.
+-  **Base de datos**  **MongoDB** para almacenar información del proyecto. **Cloudinary** para almacenar las imágenes de las colecciones.
 
 -  **Control de código**: Uso de **GitHub** para la gestión del proyecto
 
@@ -101,13 +97,13 @@ git  clone  https://github.com/BeJotaTriple/Delizia-Gourmet.git
 cd  Delizia-Gourmet
 ```
 
-2. Instalar las dependencias necearías tanto en la carpetas del Backend y Frontend en el siguiente comando
+2. Instalar las dependencias necearías tanto en la carpeta del Backend y Frontend en el siguiente comando
 
 ```bash
 npm  install
 ```
 
-3. Crea un archivo .env tanto en la carpeta backend y  frontend añade las siguientes variables
+3. Crea un archivo .env tanto en la carpeta Backend y  Frontend añade las siguientes variables
 
   
 => Backend
@@ -133,23 +129,26 @@ VITE_REACT_APP_UPLOAD_PRESET="img-DeliziaGourmet" <Preset de configuración para
 ```
 ## Ejecución
 
-1. Inicia el servidor en la carpeta backend:
+1. Inicia el servidor en la carpeta Backend:
 
 ```bash
 cd backend
 npm run build
-npm start
+npm run dev
 ```
-2. Inicia la interfaz del proyecto en la carpeta frontend:
+2. Inicia la interfaz del proyecto en la carpeta Frontend:
 
 ```bash
-
 cd frontend
-
 npm run dev
-
 ```
+**Opcional:** Desde la carpeta Backend puedes correr los siguientes comandos para correr los dos servicios al mismo tiempo
 
+```bash
+cd backend
+npm run construction
+npm run start
+```
 ## Endpoints del Backend
 
 Rutas para Clients
@@ -187,3 +186,9 @@ Rutas para Products
     PUT /api/products/:id - <Actualizar un producto específico por su ID.>
 
     DELETE /api/products/:id - <Eliminar un producto específico por su ID.>
+
+## Evidencias de Funcionamiento
+
+![Demostración de la interfaz visual](/evidencias/image832.png)
+
+**Nota:** las imágenes se encuentran con mayor resolución en la carpeta de evidencias.
