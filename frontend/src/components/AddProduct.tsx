@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import uploadImage from '../api/apiCloudinary';
 import apiClient from "../api/apiClient";
 import styles from "../style"
@@ -53,7 +53,6 @@ const AddProduct: React.FC = () => {
           price: '',
           image: ''
         });
-        handleClear()
     } catch (error) {
       alert('Error saving product');
       console.log(error);
@@ -80,15 +79,8 @@ const AddProduct: React.FC = () => {
     setLoading(false);
   };
 
-  const formRef= useRef(null);
-  const handleClear = () => {
-    const inputs = formRef.current.querySelectorAll('input, textarea');
-    inputs.forEach((field: { value: string; }) => { field.value = ''; });
-    setImagePreview("");
-  }
-
     return (
-        <form ref={formRef} onSubmit={handleSubmit} className="max-w-lg mx-auto p-4">
+        <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-4">
             <div className="flex flex-col space-y-4">
                 <h2 className="font-bold w-full">Agregar producto</h2>
                 <input type="text" placeholder="nombre" onChange={e => setFormData({ ...formData, name: e.target.value })}

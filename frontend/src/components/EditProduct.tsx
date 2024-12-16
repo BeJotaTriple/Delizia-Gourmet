@@ -139,7 +139,7 @@ const EditProduct: React.FC = () => {
                   )} 
                 </div>
                 <button type="submit" className={`${styles.buttonForm} ${loading? styles.buttonDisabled : ''}`} disabled={loading}>{loading? 'Cargando imagen...': 'Actualizar'}</button>
-                <button type="button" onClick={() => navigate('/categorias')} className={`${styles.buttonForm}`}>Cancelar</button>
+                <button type="button" onClick={() => navigate('/products')} className={`${styles.buttonForm}`}>Cancelar</button>
             </div>
         </form>
     )
