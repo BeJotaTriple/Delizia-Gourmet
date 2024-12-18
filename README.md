@@ -147,7 +147,7 @@ npm run dev
 ```bash
 cd backend
 npm run construction
-npm run start
+npm run start-project
 ```
 ## Endpoints del Backend
 
