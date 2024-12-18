@@ -16,7 +16,7 @@ import NotFound from './components/NotFound';
 
 function App() {
   return (
-    <Router basename="/Delizia-Gourmet">  
+    <Router >  
       <header className='container mx-auto flex'>
         <h1 className='font-bold w-full text-5xl'>Delizia Gourtmet</h1>
       </header>
